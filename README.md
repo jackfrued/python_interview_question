@@ -570,15 +570,94 @@ if __name__ == "__main__":
     print(count)
 ```
 ### 21.Python-遍历列表时删除元素的正确做法
+
+第一种方法：使用while循环
+
+```python
+list1 = [1, 2, 3, 4, 5, 6]
+flag = 0
+# 删除列表中的元素4
+while flag < len(list1):
+    if list1[flag] == 4:
+        del list1[flag]
+        break
+    flag += 1
+```
+
+第二种方法：
+
+```python
+list1 = [1, 2, 3, 4, 5, 6]
+result = [i for i in list1 if i != 4]
+```
+
+第三种方法：
+
+```python
+list1 = [1, 2, 3, 4, 5, 6]
+result = filter(lambda x: x != 4, a)
+print(list(result))
+# result是一个filter对象，需要转换成list才能看见结果
+```
+
 ### 22.字符串的操作题目
+
 ### 23.可变类型和不可变类型
+
+```
+不可变类型：数字、字符串、bytes、元组
+可变类型：列表、字典、集合
+```
+
 ### 24.is和==有什么区别？
+
+id(object)：返回对象object在其生命周期内位于内存中的地址，id参数的参数类型是一个对象
+
+- is：比较两个对象的id值是否相等，也就是比较两个对象是否为同一个实例对象，是否指向同一个地址
+- ==：比较两个对象的内容是否相等，默认会调用对象的\_\_eq\_\_()方法
+
 ### 25.求出列表所有奇数并构造新列表
+
+```python
+list1 = [1, 2, 3, 4, 5, 6]
+result = [i for i in list1 if i & 1 == 1]
+```
+
 ### 26.用一行python代码写出1+2+3+10248
+
+```python
+sum(range(1, 10249))
+```
+
 ### 27.Python中变量的作用域？（变量查找顺序)
+
+```
+L --> E --> G --> B
+local：函数内部作用域
+enclosing：函数内部与内嵌函数之间
+global：全局作用域
+build-in：内置作用域
+```
+
 ### 28.字符串”123″转换成123，不使用内置api，例如int（）
+
+```python
+from functools import reduce
+
+def char2num(s):
+  return {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9}[s]
+def str2int(s):
+  return reduce(lambda x,y: x*10+y, map(char2num, s))
+```
+
 ### 29.Given an array of integers
 ### 30.python代码实现删除一个list里面的重复元素
+
+```python
+list1 = []
+result = list(set(list1))
+```
+
 ### 31.统计一个文本中单词频次最高的10个单词？
 ### 32.请写出一个函数满足以下条件
 ### 33.使用单一的列表生成式来产生一个新的列表
